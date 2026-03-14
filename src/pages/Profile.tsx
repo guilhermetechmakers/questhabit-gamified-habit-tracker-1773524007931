@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useCurrentUser } from "@/hooks/useAuth";
 import { useUserStats } from "@/hooks/useUserStats";
 import { supabase } from "@/lib/supabase";
@@ -6,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Star, LogOut } from "lucide-react";
+import { Star, LogOut, Settings, CreditCard, Shield } from "lucide-react";
 import { AnimatedPage } from "@/components/AnimatedPage";
 
 export function Profile() {
@@ -54,6 +55,26 @@ export function Profile() {
               <span className="font-semibold">Level {stats.level}</span>
               <span className="text-muted-foreground">· {stats.xp_total} XP</span>
             </div>
+          )}
+          <Button variant="outline" className="w-full rounded-xl" asChild>
+            <Link to="/settings">
+              <Settings className="mr-2 h-4 w-4" />
+              Settings
+            </Link>
+          </Button>
+          <Button variant="outline" className="w-full rounded-xl" asChild>
+            <Link to="/subscription">
+              <CreditCard className="mr-2 h-4 w-4" />
+              Subscription
+            </Link>
+          </Button>
+          {user?.role === "admin" && (
+            <Button variant="outline" className="w-full rounded-xl" asChild>
+              <Link to="/admin">
+                <Shield className="mr-2 h-4 w-4" />
+                Admin
+              </Link>
+            </Button>
           )}
           <Button
             variant="outline"

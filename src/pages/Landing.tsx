@@ -57,9 +57,13 @@ export function Landing() {
       </section>
 
       <footer className="mt-16 border-t border-border px-4 py-8 text-center text-sm text-muted-foreground">
+        <Link to="/about" className="underline hover:text-foreground">About & Help</Link>
+        {" · "}
         <Link to="/privacy" className="underline hover:text-foreground">Privacy</Link>
         {" · "}
         <Link to="/terms" className="underline hover:text-foreground">Terms</Link>
+        {" · "}
+        <Link to="/cookies" className="underline hover:text-foreground">Cookies</Link>
       </footer>
     </AnimatedPage>
   );
